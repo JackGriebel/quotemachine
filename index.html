@@ -1,0 +1,87 @@
+<head>
+    <title>Quote Machine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+<body>
+		<br>
+		<br>
+		<br>
+			<div id="vertical"></div>
+			<button class="btn btn-danger" id='go' type="button">New Quote</button>
+	<br>
+</body>
+
+<style>
+  body {
+	background-color: #00375e;
+	color: white;
+	margin-top: 10%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+#vertical{
+    margin-top: 200px;
+}
+h1, h2 {
+	margin-left: 50px;
+}
+#go {
+	position: absolute;
+	margin-left: 50px;
+}
+</style>
+
+<script>
+var quotes = ["The proletarians have nothing to lose but their chains.", "The theory of Communists may be summed in the single sentence: Abolition of private property.", "Men make their own history, but they do not make it as they please.", "Religion is the opium of the people", "The history of all previous societies has been the history of class struggles." , "History is nothing but the actions of men in pursuit of their ends.", "The last capitalist we hang shall be the one who sold us the rope", "When the sufferers learn to think, then the thinkers will learn to suffer.", "My object in life is to dethrone God and destroy capitalism.", "The rich will do anything for the poor but get off their backs.", "Money degrades all the gods of man and converts them into commodities.", "From each according to his abilities, to each according to his needs.", "Workers of the world unite!" , "To crush the bourgeoisie grind them between the millstones of taxation and inflation.", "A lie told often enough becomes the truth.", "Give me four years to teach the children and the seed I have sown will never be uprooted.", "What caused the war? The greed of the Italian money bags and capitalists", "The people who cast the votes decide nothing. The people who count the votes decide everything.", "A single death is a tragedy; a million deaths is a statistic.", "Gratitude is a sickness suffered by dogs.", "In the Soviet army it takes more courage to retreat than advance.", "Ideas are more powerful than guns.", "You do not lament the loss of hair of one who has been beheaded.", "It takes a brave man to be a coward in the Red Army.", "The only real power comes out of a long rifle.", "When you chop wood, splinters fly"]
+//0-12 marx, 13-17 lenin, 18-25 stalin.
+
+var randArray = shuffle([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]);
+var quotePosition = 0;
+var author;
+if(randArray[quotePosition] >= 0 && randArray[quotePosition] <= 12) {
+		var author = "-Karl Marx"
+	}
+	else if(randArray[quotePosition] >= 13 && randArray[quotePosition] <= 17) {
+		var author = "-Vladimir Lenin"
+	}
+	else if(randArray[quotePosition] >= 18 && randArray[quotePosition] <= 25) {
+		var author = "-Josef Stalin"
+	}
+($('#vertical')[0].innerHTML = "<h1> " + quotes[randArray[quotePosition]] + "</h1>"  + "<h2>" + "<em>" + author + "</em>" + "</h2>")
+quotePosition++
+$('#go').click(onPress);
+function onPress() {
+	if(randArray[quotePosition] >= 0 && randArray[quotePosition] <= 12) {
+		var author = "-Karl Marx"
+	}
+	else if(randArray[quotePosition] >= 13 && randArray[quotePosition] <= 17) {
+		var author = "-Vladimir Lenin"
+	}
+	else if(randArray[quotePosition] >= 18 && randArray[quotePosition] <= 25) {
+		var author = "-Josef Stalin"
+	}
+	$('#vertical').hide();
+	$('#vertical')[0].innerHTML = ("<h1> " + quotes[randArray[quotePosition]] + "</h1>"  + "<h2>" + "<em>" + author + "</em>" + "</h2>")
+	$('#vertical').fadeIn(100);
+	quotePosition++
+	if(quotePosition == 25) {
+		quotePosition = 0;
+	}
+
+}
+function shuffle(array) {
+    var i = array.length,
+        j = 0,
+        temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1));
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}ee
+</script>
